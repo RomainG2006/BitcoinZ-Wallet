@@ -485,7 +485,7 @@ class Mining(Box):
         miner_path,_,_ = self.utils.get_miner_path(self.selected_miner)
         if miner_path:
             if self.selected_miner == "MiniZ":
-                command = [f'{miner_path} --url {self.selected_address}.{self.worker_name}@{self.selected_server} --pass c=BTCZ,zap=BTCZ --par 144,5 --pers BitcoinZ']
+                command = [f'{miner_path} --url {self.selected_address}.{self.worker_name}@{self.selected_server} --pass c=BTCZ,zap=BTCZ --par 144,5']
             elif self.selected_miner == "MiniZ" != "--pass c=BTCZ,zap=BTCZ":
                 command = [f'{miner_path} --url {self.selected_address}.{self.worker_name}@{self.selected_server} --pass x --par 144,5 --pers BitcoinZ']
             elif self.selected_miner == "Gminer":
