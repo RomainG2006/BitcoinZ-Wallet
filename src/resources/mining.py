@@ -176,7 +176,8 @@ class Mining(Box):
                 {"pool": "Zeropool"},
                 {"pool": "PCmining"},
                 {"pool": "Darkfibersmines"},
-                {"pool": "Zergpool"}
+                {"pool": "Zergpool"},
+                {"pool": "Zpool"}
             ],
             accessor="pool",
             on_change=self.update_server_selection
@@ -219,7 +220,7 @@ class Mining(Box):
             )
         )
         self.worker_input = TextInput(
-            placeholder="Wroker Name",
+            placeholder="Worker Name",
             style=Pack(
                 color = WHITE,
                 text_align= CENTER,
@@ -420,6 +421,10 @@ class Mining(Box):
             pool_rergion_items = [
                 {"region": "Germany", "server": "btcz.pcmining.xyz:3333"}
             ]
+        elif self.selected_pool == "Zpool":
+            pool_rergion_items = [
+                {"region": "Europe", "server": "eu.mine.zpool.ca:2144"}
+            ]
         elif self.selected_pool == "Darkfibersmines":
             pool_rergion_items = [
                 {"region": "USA", "server": "142.4.211.28:4000"},
@@ -480,6 +485,8 @@ class Mining(Box):
         miner_path,_,_ = self.utils.get_miner_path(self.selected_miner)
         if miner_path:
             if self.selected_miner == "MiniZ":
+                command = [f'{miner_path} --url {self.selected_address}.{self.worker_name}@{self.selected_server} --pass c=BTCZ,zap=BTCZ --par 144,5 --pers BitcoinZ']
+            elif self.selected_miner == "MiniZ" != "--pass c=BTCZ,zap=BTCZ":
                 command = [f'{miner_path} --url {self.selected_address}.{self.worker_name}@{self.selected_server} --pass x --par 144,5 --pers BitcoinZ']
             elif self.selected_miner == "Gminer":
                 command = [f'{miner_path} --server {self.selected_server} --user {self.selected_address}.{self.worker_name} --pass x --algo 144_5 --pers BitcoinZ']
